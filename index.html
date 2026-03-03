@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Americans Insured - Enrollment with Gregory Sloan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #0F2C59;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .header-phone {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .phone-button {
+            background-color: #D4AF37;
+            color: #0F2C59;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .phone-button:hover {
+            background-color: #E8C547;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0F2C59 0%, #1a3a7a 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background-color: #D4AF37;
+            color: #0F2C59;
+        }
+
+        .btn-primary:hover {
+            background-color: #E8C547;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: #0F2C59;
+            transform: translateY(-3px);
+        }
+
+        .profile-section {
+            background-color: white;
+            padding: 60px 0;
+            margin: 40px 0;
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .profile-photo {
+            flex-shrink: 0;
+        }
+
+        .profile-photo img {
+            width: 300px;
+            height: 300px;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            object-fit: cover;
+        }
+
+        .profile-info {
+            text-align: left;
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0F2C59;
+            margin-bottom: 15px;
+        }
+
+        .profile-credentials {
+            font-size: 18px;
+            color: #666;
+            display: inline;
+            margin-left: 5px;
+        }
+
+        .profile-blurb {
+            font-size: 16px;
+            color: #555;
+            max-width: 700px;
+            margin: 20px auto;
+            line-height: 1.8;
+        }
+
+        .features-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: #0F2C59;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .enrollment-section {
+            background: linear-gradient(135deg, #0F2C59 0%, #1a3a7a 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .enrollment-section h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .enrollment-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        footer {
+            background-color: #0F2C59;
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 20px;
+        }
+
+        .footer-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .footer-credentials {
+            font-size: 14px;
+            display: inline;
+            margin-left: 5px;
+        }
+
+        .footer-address {
+            font-size: 14px;
+            color: #bbb;
+            margin: 15px 0;
+            line-height: 1.8;
+        }
+
+        .footer-address a {
+            color: #D4AF37;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-address a:hover {
+            color: #E8C547;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #D4AF37;
+        }
+
+        .footer-copyright {
+            font-size: 12px;
+            color: #888;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .profile-name {
+                font-size: 24px;
+            }
+
+            .profile-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .profile-info {
+                text-align: center;
+            }
+
+            .profile-photo img {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Geo-blocking check -->
+    <script>
+        // Geo-blocking for US only
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                if (data.country_code !== 'US') {
+                    document.body.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; height: 100vh; background: #0F2C59; color: white; text-align: center; padding: 20px;"><div><h1>Service Not Available</h1><p>This service is currently available to US residents only.</p></div></div>';
+                }
+            })
+            .catch(error => console.log('Geo-check skipped'));
+    </script>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Americans Insured</div>
+                <div class="header-phone">
+                    <a href="tel:+18003658376" class="phone-button">📞 800.365.TERM</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Simple Enrollment Process</h1>
+            <p>Work with Gregory Sloan to find the right coverage for your needs</p>
+            <div class="cta-buttons">
+                <a href="https://customer.enroll.natgenhealth.com/quick-quote/?agent=CfDJ8HnG7iviitJBoT9st8R33EQgB_AgKAuLBhwmw7vlGbJSeWzgOKdP_guFOK4Ubh1f5gIitDRj30mGtsz-M874sDNlwg&product=life-cancer-critical-illness" class="btn btn-primary" target="_blank">Apply Now</a>
+                <a href="tel:+18003658376" class="btn btn-secondary">Call Now</a>
+                <button class="btn btn-secondary" onclick="openHubSpotMeetings()">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="profile-section">
+        <div class="container">
+            <div class="profile-container">
+                <div class="profile-photo">
+                    <img src="gregory-sloan.png" alt="Gregory M Sloan">
+                </div>
+                <div class="profile-info">
+                    <div class="profile-name">Gregory M Sloan<span class="profile-credentials">CLU, ChFC</span></div>
+                    <p class="profile-blurb">With over 20 years of experience in the insurance industry, I specialize in helping clients navigate the enrollment process with confidence. My goal is to ensure you get the coverage that best fits your needs and budget.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 style="text-align: center; color: #0F2C59; font-size: 36px; margin-bottom: 10px;">Why Choose Us</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 40px;">Expert guidance through every step of the enrollment process</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Quick Process</h3>
+                    <p>Simple enrollment that takes just minutes to complete</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Expert Support</h3>
+                    <p>Personalized assistance from a licensed professional</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✓</div>
+                    <h3>Transparent</h3>
+                    <p>Clear information about coverage options and costs</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Available</h3>
+                    <p>Easy to reach by phone or book a consultation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="enrollment-section">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Choose the option that works best for you</p>
+            <div class="cta-buttons">
+                <a href="https://customer.enroll.natgenhealth.com/quick-quote/?agent=CfDJ8HnG7iviitJBoT9st8R33EQgB_AgKAuLBhwmw7vlGbJSeWzgOKdP_guFOK4Ubh1f5gIitDRj30mGtsz-M874sDNlwg&product=life-cancer-critical-illness" class="btn btn-primary" target="_blank">Apply Now</a>
+                <a href="tel:+18003658376" class="btn btn-secondary">Call Now</a>
+                <button class="btn btn-secondary" onclick="openHubSpotMeetings()">Book Now</button>
+            </div>
+            <p style="margin-top: 30px; font-size: 14px; opacity: 0.9;">100% Confidential & Secure Enrollment</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-name">Gregory M Sloan<span class="footer-credentials">CLU, ChFC</span></div>
+            <div class="footer-address">
+                3210 N University Drive, Unit 223<br>
+                Coral Springs, FL 33065<br>
+                <a href="tel:+18003658376" style="color: #ecf0f1; text-decoration: none; font-size: 16px; font-weight: 600; letter-spacing: 1px;">800.365.TERM</a><br>
+                <a href="tel:+18003658376" style="color: #D4AF37; text-decoration: none; font-size: 16px; font-weight: 600; letter-spacing: 1px; cursor: pointer; margin-top: 5px; display: block;">800.365.8376</a><br>
+                <a href="tel:+17543136200" style="color: #ecf0f1; text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: 0.5px; cursor: pointer; margin-top: 8px; display: block;">Call Greg Now 754.313.6200</a>
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="sms-opt-in.html">SMS Opt-In</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 Gregory M Sloan. All rights reserved.</p>
+            <p style="font-size: 11px; color: #95a5a6; margin-top: 15px; line-height: 1.6;">
+                <strong>State Licenses:</strong> Gregory Sloan NPN: 2145633 | AL: 220795 | AZ: 2145633 | AR: 2145633 | CA: 0D56287 | CO: 674464 | CT: 2145633 | DE: 3002204744 | DC: 3001199406 | FL: P049737 | GA: 691049 | HI: 2145633 | ID: 2145633 | IL: 2145633 | IN: 393296 | IA: 2145633 | KS: 2145633 | KY: DOI-582845 | LA: 589089 | ME: PRN313085 | MD: 2084972 | MA: 2145633 | MI: 2145633 | MN: 40335477 | MS: 10531711 | MO: 353566 | MT: 3000834623 | NE: 2145633 | NV: 187701 | NJ: 3000637570 | NM: 2145633 | NY: LA-1487931 | NC: 2145633 | ND: 2145633 | OH: 594399 | OK: 3000302658 | OR: 2145633 | PA: 335545 | RI: 3001986914 | SC: 2145633 | SD: 2145633 | TN: 2406242 | TX: 1273106 | UT: 830274 | VA: 827910 | WA: 825107 | WV: 2145633 | WI: 2145633 | WY: 374513
+            </p>
+        </div>
+    </footer>
+
+    <!-- HubSpot Meetings Embed -->
+    <div class="meetings-iframe-container" data-src="https://meetings-na2.hubspot.com/gregory-sloan?embed=true"></div>
+    <script type="text/javascript" src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
+
+    <script>
+        // Open HubSpot Meetings
+        function openHubSpotMeetings() {
+            if (window.HubSpotConversations) {
+                window.HubSpotConversations.widget.open();
+            }
+        }
+    </script>
+</body>
+</html>
