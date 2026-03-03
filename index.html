@@ -19,10 +19,12 @@
         }
 
         header {
-            background-color: #0F2C59;
-            color: white;
+            background-color: white;
+            border-bottom: 1px solid #e9ecef;
             padding: 20px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .container {
@@ -37,36 +39,82 @@
             align-items: center;
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 1px;
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
         }
 
-        .header-phone {
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a252f;
+            letter-spacing: 0.5px;
+        }
+
+        .tagline {
+            font-size: 12px;
+            color: #D4AF37;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .secure-badge {
+            background: #0F2C59;
+            border: 3px solid #D4AF37;
+            border-radius: 50px;
+            padding: 12px 24px;
             display: flex;
             align-items: center;
-            gap: 15px;
-        }
-
-        .phone-button {
-            background-color: #D4AF37;
-            color: #0F2C59;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            gap: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             transition: all 0.3s ease;
         }
 
-        .phone-button:hover {
-            background-color: #E8C547;
+        .secure-badge:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .shield-icon {
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .badge-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .badge-text {
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        .badge-phone {
+            background-color: #D4AF37;
+            color: #0F2C59;
+            padding: 0;
+            border-radius: 0;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            display: inline;
+            margin-top: 0;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-phone:hover {
+            background-color: transparent;
+            color: #E8C547;
+            transform: none;
         }
 
         .hero {
@@ -308,6 +356,28 @@
         }
 
         @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .secure-badge {
+                padding: 10px 16px;
+                gap: 12px;
+            }
+
+            .shield-icon {
+                font-size: 24px;
+            }
+
+            .badge-text {
+                font-size: 10px;
+            }
+
+            .badge-phone {
+                font-size: 12px;
+            }
+
             .hero h1 {
                 font-size: 32px;
             }
@@ -324,11 +394,6 @@
             .btn {
                 width: 100%;
                 max-width: 300px;
-            }
-
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
             }
 
             .profile-name {
@@ -368,9 +433,16 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">AmericansInsured</div>
-                <div class="header-phone">
-                    <a href="tel:+18444678738" class="phone-button">📞 Call or Text (844) 467-8738</a>
+                <div class="logo-section">
+                    <div class="logo">AmericansInsured.com</div>
+                    <div class="tagline">Secure Protection</div>
+                </div>
+                <div class="secure-badge">
+                    <div class="shield-icon">🛡️</div>
+                    <div class="badge-content">
+                        <div class="badge-text">SECURE PROTECTION</div>
+                        <a href="tel:+18444678738" class="badge-phone">1-844-467-8738</a>
+                    </div>
                 </div>
             </div>
         </div>
